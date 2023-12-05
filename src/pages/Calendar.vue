@@ -37,12 +37,9 @@ const today = new Date();
 const currentMonth = ref(new Date().getMonth() + 1);
 const currentYear = ref(new Date().getFullYear())
 const currentMonthString = computed(() => new Date(currentYear.value, currentMonth.value - 1).toLocaleString('default', { month: 'long' }))
-// const isCurrentMonth = computed(() => today.getMonth() + 1 == currentMonth && today.getFullYear() == currentYear)
 
 const prevMonth = computed(() => currentMonth.value == 1 ? 12 : currentMonth.value - 1)
 const prevYear = computed(() => currentMonth.value == 1 ? currentYear.value - 1 : currentYear.value)
-// const nextMonth = computed(() => currentMonth.value == 12 ? 1 : currentMonth.value + 1)
-// const nextYear = computed(() => currentMonth.value == 12 ? currentYear.value + 1 : currentYear.value)
 
 function daysInMonth() {
     return new Date(currentYear.value, currentMonth.value, 0).getDate();
@@ -57,7 +54,6 @@ function endDay() {
     return 6 - new Date(currentYear.value, currentMonth.value, 0).getDay();
 }
 function isToday(d) {
-    console.log(today.getMonth() + 1 , currentMonth.value, today.getFullYear() , currentYear.value);
     if (today.getFullYear() != currentYear.value) return ''
     if (today.getMonth() + 1 != currentMonth.value) return ''
     return d === today.getDate() ? 'bg-cyan-400 rounded-full' : '';
