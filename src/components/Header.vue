@@ -6,11 +6,11 @@
                 {{ menu.title }}
             </RouterLink>
         </div>
-        <div class="h-full items-center flex p-2 px-3 hover:bg-white cursor-pointer font-bold rounded-t-3xl mx-1 ml-auto">
-            <div v-if="props.isAuthed" @click="logout">
+        <div class=" hover:bg-white cursor-pointer font-bold rounded-t-3xl mx-1 ml-auto">
+            <div v-if="props.isAuthed" @click="logout" class="h-full items-center flex p-2 px-3">
                 Logout
             </div>
-            <div v-else @click="$emit('open-login-modal')">
+            <div v-else @click="$emit('open-login-modal')" class="h-full items-center flex p-2 px-3">
                 Login
             </div>
         </div>

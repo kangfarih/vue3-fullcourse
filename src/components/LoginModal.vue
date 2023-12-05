@@ -4,6 +4,7 @@
         <div class=" bg-white z-10 rounded-md flex">
             <div class="m-1 p-4 flex-1 rounded-md border-solid border-2 border-gray-200 shadow-lg">
                 <h1 class="w-full text-center font-bold text-2xl mb-6">Login</h1>
+                <GoogleLogin @close-login-modal="$emit('close-login-modal')"/>
                 <form action="" class="flex flex-col">
                     <label for="email" class="font-bold">Username or Email</label>
                     <input v-model="email" type="email" name="" id="email" placeholder="Enter your username or email"
@@ -24,6 +25,7 @@
 
 <script setup>
 import { ref } from 'vue';
+import GoogleLogin from './Login/GoogleLogin.vue';
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 const emit = defineEmits(['close-login-modal'])
@@ -48,11 +50,6 @@ function submit() {
             console.log(errorCode, errorMessage);
         });
 }
-
-function close() {
-
-}
-
 </script>
 
 <style scoped>
