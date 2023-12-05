@@ -6,6 +6,10 @@
                 {{ menu.title }}
             </RouterLink>
         </div>
+        <div @click="$emit('open-login-modal')"
+            class="h-full items-center flex p-2 hover:bg-white cursor-pointer font-bold rounded-t-3xl mx-1">
+            Login
+        </div>
     </div>
 </template>
 

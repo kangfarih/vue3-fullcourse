@@ -7,7 +7,7 @@
                 </div>
             </transition>
         </div>
-        <div class="w-full h-96 z-10 flex justify-center items-end pb-5">
+        <div class="w-full h-96 flex justify-center items-end pb-5 absolute">
             <div v-for="(dot, i) in slideData" :class="currentSlide === i ? 'bg-black' : ''"
                 class="rounded-full w-3 h-3 bg-gray-100 mx-2 cursor-pointer" @click="() => currentSlide = i"> </div>
         </div>
