@@ -23,6 +23,7 @@ const menuList = [
     { path: '/heroes', title: 'DC Heroes' },
     { path: '/calendar', title: 'Calendar' },
     { path: '/markdown', title: 'Markdown' },
+    { path: '/slider', title: 'Slider' },
 ]
 
 </script>
