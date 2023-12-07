@@ -29,9 +29,11 @@ onMounted(() =>
 <template>
   <Header @open-login-modal="showLoginModal = true" :isAuthed="isAuthed" />
   <RouterView />
-  <transition name="fade">
-    <LoginModal v-if="showLoginModal" @close-login-modal="showLoginModal = false" />
-  </transition>
+  <Teleport to="body">
+    <transition name="fade">
+      <LoginModal v-if="showLoginModal" @close-login-modal="showLoginModal = false" />
+    </transition>
+  </Teleport>
 </template>
 
 <style scoped>

@@ -8,8 +8,8 @@
             </transition>
         </div>
         <div class="w-full h-96 flex justify-center items-end pb-5 absolute">
-            <div v-for="(dot, i) in slideData" :class="currentSlide === i ? 'bg-black' : ''"
-                class="rounded-full w-3 h-3 bg-gray-100 mx-2 cursor-pointer" @click="() => currentSlide = i"> </div>
+            <div v-for="(dot, i) in slideData" :class="currentSlide === i ? 'bg-gray-700' : 'bg-gray-100'"
+                class="rounded-full w-3 h-3 mx-2 cursor-pointer" @click="changeSlide(i)"> </div>
         </div>
     </div>
 </template>
@@ -27,15 +27,29 @@ const currentSlide = ref(0)
 
 const slideInterval = ref();
 
-onMounted(() => {
+const changeSlide = (i) => {
+    clearSlideInterval()
+    currentSlide.value = i;
+    setSlideInterval()
+}
+
+const setSlideInterval = () => {
     slideInterval.value =
         setInterval(() => {
+            console.log(new Date);
             currentSlide.value = currentSlide.value < slideData.length - 1 ? currentSlide.value + 1 : 0
         }, 5000)
+}
+const clearSlideInterval = () => {
+    clearInterval(slideInterval.value)
+}
+
+onMounted(() => {
+    setSlideInterval()
 })
 
 onUnmounted(() => {
-    clearInterval(slideInterval.value)
+    clearSlideInterval()
 })
 </script>
 

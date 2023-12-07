@@ -12,7 +12,8 @@
                 </li>
             </ul>
             <form @submit.prevent="addHero">
-                <input type="text" name="heroName" id="" v-model="heroNameInput"
+                <input type="text" name="heroName" id="" v-model="heroNameInput" ref="heroNameRef"
+                    placeholder="Input New Hero Name"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 my-2">
                 <button class="w-full bg-green-900 hover:bg-green-700 p-2 text-white rounded disabled:bg-gray-400"
                     type="button" :disabled="!heroNameInput" @click="addHero">Add Superhero</button>
@@ -22,8 +23,9 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
 
+const heroNameRef = ref(null)
 const heroNameInput = ref('')
 const dcHeros = ref([
     { name: 'Superman' },
@@ -44,5 +46,9 @@ function addHero() {
 function deleteHero(idx) {
     dcHeros.value = dcHeros.value.filter((hero, i) => i != idx);
 }
+
+onMounted(() => {
+    heroNameRef.value.focus()
+})
 
 </script>

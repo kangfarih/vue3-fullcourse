@@ -4,13 +4,15 @@
         <div class=" bg-white z-10 rounded-md flex">
             <div class="m-1 p-4 flex-1 rounded-md border-solid border-2 border-gray-200 shadow-lg">
                 <h1 class="w-full text-center font-bold text-2xl mb-6">Login</h1>
-                <GoogleLogin @close-login-modal="$emit('close-login-modal')"/>
+                <GoogleLogin @close-login-modal="$emit('close-login-modal')" />
                 <form action="" class="flex flex-col">
                     <label for="email" class="font-bold">Username or Email</label>
-                    <input v-model="email" type="email" name="" id="email" placeholder="Enter your username or email"
+                    <input v-model="email" type="email" name="" id="email" autocomplete="true" ref="emailInput"
+                        placeholder="Enter your username or email"
                         class="h-10 border-solid border-gray-400 border-2 my-1 rounded-md p-2 w-72 shadow-md">
                     <label for="password" class="font-bold">Password</label>
-                    <input v-model="password" type="password" name="" id="password" placeholder="Enter your password"
+                    <input v-model="password" type="password" name="" id="password" autocomplete="true"
+                        placeholder="Enter your password"
                         class="h-10 border-solid border-gray-400 border-2 my-1 rounded-md p-2 w-72 shadow-md">
                     <button type="submit" @click.prevent="submit"
                         class="rounded-md bg-teal-600 hover:bg-teal-800 text-white p-2 mt-4">
@@ -24,7 +26,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 import GoogleLogin from './Login/GoogleLogin.vue';
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
@@ -32,6 +34,7 @@ const emit = defineEmits(['close-login-modal'])
 
 const isLoading = ref(false);
 const email = ref('')
+const emailInput = ref(null)
 const password = ref('')
 const auth = getAuth();
 
@@ -45,11 +48,16 @@ function submit() {
             isLoading.value = false;
         })
         .catch((error) => {
+            isLoading.value = false;
             const errorCode = error.code;
             const errorMessage = error.message;
             console.log(errorCode, errorMessage);
         });
 }
+
+onMounted(()=>{
+    emailInput.value.focus()
+})
 </script>
 
 <style scoped>
