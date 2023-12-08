@@ -20,7 +20,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { onMounted, onUnmounted, ref } from 'vue';
 
 const calcButton = [
     { value: 'C', style: 'col-span-2' },
@@ -55,14 +55,15 @@ const math_it = {
 }
 const calcResult = ref('')
 const isReadyNextCalc = ref(false)
-const valueType = {
-    number: 'number',
-    operator: 'operator'
-}
+const keyListenener = ref(null)
+// const valueType = {
+//     number: 'number',
+//     operator: 'operator'
+// }
 
 const onPressButton = (btnValue) => {
     switch (btnValue) {
-        case 'C':
+        case 'C': case 'Backspace':
             calcResult.value = '';
             isReadyNextCalc.value = true;
             break;
@@ -77,8 +78,9 @@ const onPressButton = (btnValue) => {
             }
             calcResult.value = calcResult.value + (btnValue == '0' && calcResult.value == '' ? '' : btnValue)
             break;
-        case '=':
+        case '=': case 'Enter':
         case '*': case '/': case '+': case '-':
+            if (btnValue == 'Enter') btnValue = '='
             // On Math Operator pressed
             const lastVal = calcHistory.value[calcHistory.value.length - 1]
             let tmpVal = null
@@ -115,7 +117,19 @@ const onPressButton = (btnValue) => {
         default:
             break;
     }
-};
+}
+
+function onKeyDown(e) {
+    onPressButton(e.key)
+}
+
+onMounted(() => {
+    keyListenener.value = window.addEventListener('keydown', onKeyDown)
+})
+
+onUnmounted(() => {
+    window.removeEventListener('keydown', onKeyDown)
+})
 
 </script>
 
