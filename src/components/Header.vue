@@ -36,6 +36,7 @@ const menuList = [
     { path: '/calendar', title: 'Calendar' },
     { path: '/markdown', title: 'Markdown' },
     { path: '/slider', title: 'Slider' },
+    { path: '/calculator', title: 'Calculator' },
 ]
 
 const logout = () => {

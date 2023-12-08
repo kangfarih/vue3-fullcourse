@@ -36,7 +36,6 @@ const changeSlide = (i) => {
 const setSlideInterval = () => {
     slideInterval.value =
         setInterval(() => {
-            console.log(new Date);
             currentSlide.value = currentSlide.value < slideData.length - 1 ? currentSlide.value + 1 : 0
         }, 5000)
 }
