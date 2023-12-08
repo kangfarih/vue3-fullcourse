@@ -37,6 +37,7 @@ const menuList = [
     { path: '/markdown', title: 'Markdown' },
     { path: '/slider', title: 'Slider' },
     { path: '/calculator', title: 'Calculator' },
+    { path: '/reusable-modal', title: 'Reusable Modal' },
 ]
 
 const logout = () => {
