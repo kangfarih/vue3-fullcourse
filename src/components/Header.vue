@@ -18,9 +18,9 @@
 </template>
 
 <script setup>
-import { computed, onMounted } from 'vue';
+import { computed } from 'vue';
 import { RouterLink } from 'vue-router';
-import { useRoute, useRouter } from 'vue-router'
+import { useRoute } from 'vue-router'
 import { getAuth, signOut } from "firebase/auth";
 
 const props = defineProps({
@@ -38,6 +38,7 @@ const menuList = [
     { path: '/slider', title: 'Slider' },
     { path: '/calculator', title: 'Calculator' },
     { path: '/reusable-modal', title: 'Reusable Modal' },
+    { path: '/chats', title: 'Chats' },
 ]
 
 const logout = () => {

@@ -6,6 +6,7 @@ import MarkdownApp from '../pages/MarkDownApp.vue'
 import Slider from '../pages/Slider.vue'
 import Calculator from '../pages/calculator.vue'
 import ReusableModal from '../pages/ReusableModal.vue'
+import Chats from '../pages/Chats.vue'
 
 const routes = [
     { path: '/', component: Home },
@@ -15,6 +16,7 @@ const routes = [
     { path: '/slider', component: Slider },
     { path: '/calculator', component: Calculator },
     { path: '/reusable-modal', component: ReusableModal },
+    { path: '/chats', component: Chats },
 ]
 
 const router = createRouter({

@@ -7,6 +7,7 @@ import { initializeApp } from "firebase/app";
 const firebaseConfig = {
   apiKey: "AIzaSyDsm-MP04knODng1kxeA8_WJyh5gMIt-6I",
   authDomain: "vue-fullcourse-4d290.firebaseapp.com",
+  databaseURL: "https://vue-fullcourse-4d290-default-rtdb.asia-southeast1.firebasedatabase.app",
   projectId: "vue-fullcourse-4d290",
   storageBucket: "vue-fullcourse-4d290.appspot.com",
   messagingSenderId: "656395340373",
